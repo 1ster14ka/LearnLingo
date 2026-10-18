@@ -5,7 +5,6 @@
   font-weight: 700;
   font-size: 16px;
 
-  /* line-height: 20px; */
   line-height: 1.25;
 }
 
@@ -13,7 +12,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #121417;
+  color: var(--main-color);
   transition: color 0.3s ease;
   background-color: inherit;
   border: none;
@@ -21,7 +20,7 @@
 }
 
 .login:hover {
-  color: red;
+  color: var(--main-hover);
 }
 
 .img {
@@ -36,7 +35,7 @@
   border-radius: 12px;
   width: 166px;
   height: 48px;
-  background: #121417;
+  background-color: var(--main-color);
   color: #fff;
   transition: color 0.3s ease;
 
@@ -45,5 +44,5 @@
 }
 
 .register:hover {
-  color: red;
+  color: var(--main-hover);
 }

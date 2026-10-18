@@ -1,4 +1,11 @@
-.img {
-  width: 568px;
-  height: 530px;
+@media screen and (min-width: 768px) {
+  .img {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .img {
+    width: 568px;
+  }
 }

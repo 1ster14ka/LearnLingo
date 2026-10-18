@@ -6,8 +6,10 @@ import s from "./Hero.module.css";
 const Hero = () => {
   return (
     <section className={s.hero}>
-      <HeroContent />
-      <HeroImage />
+      <div className={s.container}>
+        <HeroContent />
+        <HeroImage />
+      </div>
     </section>
   );
 };

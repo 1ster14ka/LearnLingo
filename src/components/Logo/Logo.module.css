@@ -14,10 +14,10 @@
 
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #121417;
+  color: var(--main-color);
   transition: color 0.3s ease;
 }
 
 .logoText:hover {
-  color: red;
+  color: var(--main-accent);
 }

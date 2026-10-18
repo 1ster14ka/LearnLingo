@@ -1,3 +1,10 @@
+.navigationMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .navigation {
   display: flex;
   align-items: center;
@@ -8,16 +15,15 @@
   font-weight: 400;
   font-size: 16px;
 
-  /* line-height: 20px; */
   line-height: 1.25;
   color: #121417;
   transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: red;
+  color: var(--main-hover);
 }
 
 .active {
-  color: red;
+  color: var(--main-accent);
 }

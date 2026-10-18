@@ -112,11 +112,83 @@ code {
 
 /* src/index.css */
 
+:root {
+  --main-color: #121417;
+  --white-color: #fff;
+
+  --color-yellow-primary: #f4c550;
+  --color-yellow-light: #fbe9ba;
+  --color-green-dark: #9fbaae;
+  --color-green-light: #cbded3;
+  --color-blue-medium: #9fb7ce;
+  --color-blue-light: #bfd6ea;
+  --color-pink-dark: #e0a39a;
+  --color-pink: #f2c0bd;
+  --color-orange: #f0aa8d;
+  --color-peach: #f4c8ba;
+
+  --bg-color-hero: #f8f8f8;
+
+  --main-accent: var(--color-yellow-primary);
+}
+
+:root[data-theme="yellow"] {
+  --main-accent: var(--color-yellow-primary);
+  --main-hover: var(--color-yellow-light);
+}
+:root[data-theme="green"] {
+  --main-accent: var(--color-green-dark);
+  --main-hover: var(--color-green-light);
+}
+:root[data-theme="blue"] {
+  --main-accent: var(--color-blue-medium);
+  --main-hover: var(--color-blue-light);
+}
+:root[data-theme="pink"] {
+  --main-accent: var(--color-pink-dark);
+  --main-hover: var(--color-pink);
+}
+
+:root[data-theme="orange"] {
+  --main-accent: var(--color-orange);
+  --main-hover: var(--color-peach);
+}
+/* @media screen and (min-width: 768px) {
+  max-width: 768px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media screen and (min-width: 1280px) {
+  max-width: 1280px;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+@media screen and (min-width: 1440px) {
+  max-width: 1440px;
+  padding-left: 64px;
+  padding-right: 64px;
+} */
+
+@media screen and (min-width: 764px) {
+  #root {
+    max-width: 764px;
+    /* padding: 20px; */
+  }
+}
+@media screen and (min-width: 1280px) {
+  #root {
+    width: 1440px;
+    /* padding: 20px; */
+  }
+}
+
 #root {
-  width: 1440px;
+  /* width: 1440px; */
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px 64px 0;
+  /* padding: 20px 64px 0; */
   min-height: 100svh;
 }
 

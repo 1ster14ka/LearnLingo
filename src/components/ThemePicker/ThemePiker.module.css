@@ -1,0 +1,49 @@
+.themePicker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dot--yellow,
+.dot--green,
+.dot--blue,
+.dot--pink,
+.dot--orange {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  /* border: none; */
+  cursor: pointer;
+}
+
+.dot--yellow:hover,
+.dot--green:hover,
+.dot--blue:hover,
+.dot--pink:hover,
+.dot--orange:hover {
+  opacity: 0.8;
+}
+
+.dot--yellow {
+  background-color: var(--color-yellow-primary);
+}
+
+.dot--green {
+  background-color: var(--color-green-dark);
+}
+
+.dot--blue {
+  background-color: var(--color-blue-medium);
+}
+
+.dot--pink {
+  background-color: var(--color-pink-dark);
+}
+
+.dot--orange {
+  background-color: var(--color-orange);
+}
+
+.active {
+  border: 2px solid black;
+}

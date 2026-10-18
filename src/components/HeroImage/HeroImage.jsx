@@ -1,9 +1,15 @@
-import img from "../../assets/block.png";
-
+import { useTheme } from "../ThemeContext/ThemeContext";
 import s from "./HeroImage.module.css";
 
 const HeroImage = () => {
-  return <img src={img} alt="" className={s.img} />;
+  const { theme } = useTheme();
+  return (
+    <img
+      src={`../../../public/images/Mac-${theme}.png`}
+      alt=""
+      className={s.img}
+    />
+  );
 };
 
 export default HeroImage;
