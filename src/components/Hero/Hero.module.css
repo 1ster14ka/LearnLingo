@@ -1,0 +1,5 @@
+.hero {
+  display: flex;
+  padding-top: 20px;
+  gap: 24px;
+}
