@@ -11,6 +11,11 @@
   /* line-height: 20px; */
   line-height: 1.25;
   color: #121417;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: red;
 }
 
 .active {

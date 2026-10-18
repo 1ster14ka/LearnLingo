@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import Statistics from "./components/Statistics/Statistics";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <Statistics />
       </main>
     </>
   );
