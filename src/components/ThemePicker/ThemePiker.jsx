@@ -1,4 +1,4 @@
-import { useTheme } from "../ThemeContext/ThemeContext";
+import { useTheme } from "../../context/ThemeContext/ThemeContext";
 import s from "./ThemePiker.module.css";
 
 const ThemePiker = () => {

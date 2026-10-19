@@ -1,0 +1,18 @@
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: 166px;
+  height: 48px;
+  background-color: var(--main-color);
+  color: #fff;
+  transition: color 0.3s ease;
+
+  cursor: pointer;
+  border: none;
+}
+
+.register:hover {
+  color: var(--main-hover);
+}

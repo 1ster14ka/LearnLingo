@@ -1,17 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import Statistics from "./components/Statistics/Statistics";
+import Home from "./pages/Home/Home";
+import AuthProvider from "./context/AuthProvider/AuthProvider";
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Statistics />
-      </main>
-    </>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 export default App;

@@ -1,0 +1,19 @@
+.login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-color);
+  transition: color 0.3s ease;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.login:hover {
+  color: var(--main-hover);
+}
+
+.img {
+  width: 20px;
+  height: 20px;
+}
