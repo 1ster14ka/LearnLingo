@@ -1,15 +1,26 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 
-import { FaRegEyeSlash, FaRegEye } from "react-icons/fa6";
+import * as Yup from "yup";
 
 import s from "./LoginForm.module.css";
-import { useState } from "react";
+import PasswordField from "../PasswordField/PasswordField";
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Must be a valid email!").required("Required"),
+  password: Yup.string()
+    .required("No password provided.")
+    .min(8, "Password is too short - should be 8 chars minimum."),
+});
 
 const LoginForm = () => {
-  const [isOpenEye, setIsOpenEye] = useState(false);
+  const initialValues = {
+    email: "",
+    password: "",
+  };
 
-  const toggleEye = () => {
-    setIsOpenEye((prev) => !prev);
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
   };
 
   return (
@@ -17,32 +28,28 @@ const LoginForm = () => {
       <h2 className={s.title}>Log In</h2>
       <p className={s.text}>
         Welcome back! Please enter your credentials to access your account and
-        continue your search for an teacher.
+        continue your search for a teacher.
       </p>
-      <Formik>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={LoginSchema}
+      >
         <Form className={s.form}>
-          <Field
-            name="email"
-            type="text"
-            placeholder="Email"
-            className={s.input}
-          />
-          <label className={s.label}>
-            <button type="button" className={s.btnEye} onClick={toggleEye}>
-              {isOpenEye ? (
-                <FaRegEye className={s.iconEye} />
-              ) : (
-                <FaRegEyeSlash className={s.iconEye} />
-              )}
-            </button>
+          <label>
             <Field
-              name="password"
-              type="password"
-              placeholder="Password"
+              name="email"
+              type="email"
+              placeholder="Email"
               className={s.input}
             />
+            <ErrorMessage name="email" component="span" className={s.error} />
           </label>
-          <button className={s.btn}>Login</button>
+
+          <PasswordField name="password" placeholder="Password" />
+          <button type="submit" className={s.btn}>
+            Login
+          </button>
         </Form>
       </Formik>
     </div>

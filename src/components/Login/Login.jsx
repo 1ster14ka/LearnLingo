@@ -1,5 +1,6 @@
-import loginSvg from "../../assets/login.svg";
 import useAuthModal from "../../hooks/useAuthModal";
+
+import { FiLogIn } from "react-icons/fi";
 
 import s from "./Login.module.css";
 
@@ -13,7 +14,7 @@ const Login = () => {
         className={s.login}
         onClick={() => openAuthModal("login")}
       >
-        <img src={loginSvg} alt="login" className={s.img} />
+        <FiLogIn className={s.icon} />
         <span>Login</span>
       </button>
     </>

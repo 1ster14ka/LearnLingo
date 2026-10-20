@@ -13,7 +13,8 @@
   color: var(--main-hover);
 }
 
-.img {
+.icon {
   width: 20px;
   height: 20px;
+  color: var(--main-accent);
 }
