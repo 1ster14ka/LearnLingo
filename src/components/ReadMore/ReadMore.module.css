@@ -1,0 +1,9 @@
+.btnLoadMore {
+  text-decoration: underline;
+  margin-bottom: 32px;
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 1.5;
+  text-decoration-skip-ink: none;
+}

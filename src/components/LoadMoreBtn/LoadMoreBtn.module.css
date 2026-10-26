@@ -1,0 +1,9 @@
+.btnMore {
+  display: block;
+  border-radius: 12px;
+  width: 183px;
+  height: 60px;
+  background-color: var(--main-accent);
+  margin: 0 auto;
+  margin-bottom: 30px;
+}

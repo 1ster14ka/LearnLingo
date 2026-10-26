@@ -1,3 +1,5 @@
+import s from "./TeacherFilters.module.css";
+
 const TeacherFilters = ({ changeFilters }) => {
   const handleChange = (e) => {
     const name = e.target.name;
@@ -5,10 +7,15 @@ const TeacherFilters = ({ changeFilters }) => {
     changeFilters({ [name]: value });
   };
   return (
-    <>
-      <label>
-        <span>Languages</span>
-        <select name="lang" onChange={handleChange}>
+    <div className={s.filters}>
+      <label className={s.field}>
+        <span className={s.label}>Languages</span>
+        <select
+          className={s.select}
+          name="lang"
+          onChange={handleChange}
+          defaultValue=""
+        >
           <option value="">Select language</option>
           <option value="English">English</option>
           <option value="french">French</option>
@@ -21,9 +28,15 @@ const TeacherFilters = ({ changeFilters }) => {
           <option value="mandarin chinese">Mandarin Chinese</option>
         </select>
       </label>
-      <label>
-        <span>Level of knowledge</span>
-        <select name="lvl" onChange={handleChange}>
+
+      <label className={s.field}>
+        <span className={s.label}>Level of knowledge</span>
+        <select
+          className={s.select}
+          name="lvl"
+          onChange={handleChange}
+          defaultValue=""
+        >
           <option value="">Select Level</option>
           <option value="a1">A1 Beginner</option>
           <option value="a2">A2 Elementary</option>
@@ -33,9 +46,15 @@ const TeacherFilters = ({ changeFilters }) => {
           <option value="c2">C2 Proficient</option>
         </select>
       </label>
-      <label>
-        <span>Price</span>
-        <select name="price" onChange={handleChange}>
+
+      <label className={s.field}>
+        <span className={s.label}>Price</span>
+        <select
+          className={s.select}
+          name="price"
+          onChange={handleChange}
+          defaultValue=""
+        >
           <option value="">Select Price</option>
           <option value="20">10-20 $</option>
           <option value="30">20-30 $</option>
@@ -43,7 +62,7 @@ const TeacherFilters = ({ changeFilters }) => {
           <option value="50">40-50 $</option>
         </select>
       </label>
-    </>
+    </div>
   );
 };
 

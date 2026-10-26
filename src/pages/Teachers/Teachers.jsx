@@ -12,6 +12,8 @@ import {
 } from "../../components/redux/Teachers/selectors";
 
 import s from "./Teachers.module.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Header from "../../components/Header/Header";
 
 const Teachers = () => {
   const dispatch = useDispatch();
@@ -23,9 +25,15 @@ const Teachers = () => {
   const teachers = useSelector(teachersSelect);
 
   const [filters, setFilters] = useState({ lang: "", lvl: "", price: "" });
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const changeFilters = (filter) => {
     setFilters((prev) => ({ ...prev, ...filter }));
+    setVisibleCount(3);
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 3);
   };
 
   const filterTeachers = teachers.filter((teacher) => {
@@ -47,6 +55,11 @@ const Teachers = () => {
     return matchesLanguage && matchesLevel && matchesPrice;
   });
 
+  const visibleTeachers = filterTeachers.slice(0, visibleCount);
+  const hasMore = visibleCount < filterTeachers.length;
+
+  console.log(filterTeachers);
+
   if (isLoading) {
     return <Loader />;
   }
@@ -54,10 +67,21 @@ const Teachers = () => {
     return <p>Teachers not Found</p>;
   }
   return (
-    <div className={s.pages}>
-      <TeacherFilters changeFilters={changeFilters} />
-      <TeacherList teachers={filterTeachers} />
-    </div>
+    <>
+      <Header />
+      <div className={s.container}>
+        <TeacherFilters changeFilters={changeFilters} />
+        {visibleTeachers.length === 0 && (
+          <ErrorMessage message={"Not Found Teacher"} />
+        )}
+        <TeacherList
+          filters={filters}
+          hasMore={hasMore}
+          teachers={visibleTeachers}
+          onLoadMore={handleLoadMore}
+        />
+      </div>
+    </>
   );
 };
 

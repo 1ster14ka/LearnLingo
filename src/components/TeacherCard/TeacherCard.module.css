@@ -1,0 +1,107 @@
+.item {
+  padding: 20px;
+  border: dashed 1.5px var(--main-accent);
+  position: relative;
+
+  border-radius: 20px;
+}
+
+.wrapperImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--main-accent);
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+}
+.img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.wrapperImg::after {
+  position: absolute;
+  content: "";
+  top: 20px;
+  right: 20%;
+  width: 12px;
+  height: 12px;
+  background-color: #38cd3e;
+  border-radius: 50%;
+  border: 2px solid var(--white-color);
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8a8a89;
+}
+
+.listLessons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.itemLessons {
+  font-weight: 600;
+  font-size: 16px;
+
+  line-height: 1.5;
+  color: var(--main-color);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemLessons::after {
+  position: absolute;
+  top: 3px;
+  right: -8px;
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background-color: #12141733;
+}
+
+.iconStar {
+  color: #ffc531;
+}
+
+.price {
+  color: #38cd3e;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+
+  line-height: 1;
+  color: var(--main-color);
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 1440px) {
+  .item {
+    display: flex;
+    gap: 48px;
+    padding: 24px;
+  }
+  .wrapperImg {
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .wrapperContent {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,18 @@
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #8a8a89;
+}
+
+.text {
+  color: var(--main-color);
+}
+
+.lang {
+  text-decoration: underline;
+}

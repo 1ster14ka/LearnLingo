@@ -1,0 +1,36 @@
+.experience {
+  margin-bottom: 20px;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.wrapperUserInfo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.wrapperReviewer {
+  display: flex;
+  flex-direction: column;
+}
+
+.iconUser {
+  width: 30px;
+  height: 30px;
+}
+
+.iconStar {
+  color: #ffc531;
+  margin-right: 5px;
+}
+
+.reviewerName {
+  color: #8a8a89;
+}

@@ -1,8 +1,15 @@
-const LanguageLevelList = ({ levels }) => {
+import s from "./LanguageLevelList.module.css";
+
+const LanguageLevelList = ({ levels, selectedLevel }) => {
   return (
-    <ul>
+    <ul className={s.levelList}>
       {levels.map((level) => (
-        <li key={level}>{level}</li>
+        <li
+          className={`${s.levelItem} ${selectedLevel && level.toLowerCase().startsWith(selectedLevel) ? s.active : ""} `}
+          key={level}
+        >
+          {level}
+        </li>
       ))}
     </ul>
   );
