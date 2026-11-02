@@ -4,6 +4,8 @@ import * as Yup from "yup";
 
 import s from "./LoginForm.module.css";
 import PasswordField from "../PasswordField/PasswordField";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/Auth/operation";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Must be a valid email!").required("Required"),
@@ -17,9 +19,10 @@ const LoginForm = () => {
     email: "",
     password: "",
   };
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    dispatch(loginUser(values));
     actions.resetForm();
   };
 

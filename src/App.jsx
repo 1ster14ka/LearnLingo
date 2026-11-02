@@ -3,6 +3,8 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import Teachers from "./pages/Teachers/Teachers";
+import AuthModal from "./components/AuthModal/AuthModal";
+import FavoritePage from "./pages/FavoritePage/FavoritePage";
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/teachers" element={<Teachers />} />
+        <Route path="/favorites" element={<FavoritePage />} />
       </Routes>
+      <AuthModal />
     </AuthProvider>
   );
 }

@@ -32,9 +32,9 @@
 
   border: 1px solid transparent;
   border-radius: 14px;
-  background-color: #fff;
+  background-color: #e9e9e6;
 
-  color: #121417;
+  color: var(--main-color);
   font: inherit;
   font-size: 20px;
   font-weight: 600;
@@ -56,13 +56,13 @@
 }
 
 .select:focus-visible {
-  border-color: #9bdbb0;
+  border-color: var(--main-accent);
   box-shadow: 0 0 0 3px rgb(155 219 176 / 25%);
 }
 
 .select option {
-  color: #121417;
-  background-color: #fff;
+  color: var(--main-color);
+  background-color: var(--white-color);
   font-size: 16px;
 }
 

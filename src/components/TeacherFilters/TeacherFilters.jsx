@@ -17,7 +17,7 @@ const TeacherFilters = ({ changeFilters }) => {
           defaultValue=""
         >
           <option value="">Select language</option>
-          <option value="English">English</option>
+          <option value="english">English</option>
           <option value="french">French</option>
           <option value="german">German</option>
           <option value="polish">Polish</option>

@@ -1,0 +1,13 @@
+.image {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  width: 320px;
+}
+
+.errorMessage {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-accent);
+}

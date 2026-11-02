@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAbwWzNCnUszM2JmjsX_OS9tdTGcq7SIdw",
   authDomain: "learnlingo-8a25a.firebaseapp.com",
   databaseURL:

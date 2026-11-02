@@ -3,9 +3,11 @@ import * as Yup from "yup";
 
 import s from "./RegisterForm.module.css";
 import PasswordField from "../PasswordField/PasswordField";
+import { useDispatch } from "react-redux";
+import { registerUser, updateAccount } from "../redux/Auth/operation";
 
 const RegisterSchema = Yup.object().shape({
-  name: Yup.string().min(2, "Too short!").required("Required"),
+  name: Yup.string().min(2, "Too short!"),
   email: Yup.string().email("Must be a valid email!").required("Required"),
   password: Yup.string()
     .required("No password provided.")
@@ -19,7 +21,22 @@ const RegisterForm = () => {
     password: "",
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, actions) => {
+    console.log(values);
+
+    dispatch(registerUser(values))
+      .unwrap()
+      .then((data) =>
+        dispatch(
+          updateAccount({
+            idToken: data.idToken,
+            displayName: values.name,
+          }),
+        ),
+      );
+
     actions.resetForm();
   };
 
@@ -54,9 +71,7 @@ const RegisterForm = () => {
             />
             <ErrorMessage name="email" component="span" className={s.error} />
           </label>
-
           <PasswordField name="password" placeholder="Password" />
-
           <button type="submit" className={s.btn}>
             Register
           </button>

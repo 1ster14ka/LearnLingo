@@ -1,0 +1,27 @@
+.logoutBtn {
+  width: 166px;
+  height: 48px;
+  background-color: var(--main-accent);
+
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background-image: linear-gradient(
+    90deg,
+    var(--main-accent) 0%,
+    var(--main-accent) 33%,
+    var(--white-color) 50%,
+    var(--main-accent-light, var(--main-accent)) 67%,
+    var(--main-accent-light, var(--main-accent)) 100%
+  );
+  background-size: 300% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--main-accent) 60%, transparent);
+  transition: all 0.4s ease-in-out;
+}

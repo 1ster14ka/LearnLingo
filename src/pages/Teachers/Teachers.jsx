@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 
 import TeacherFilters from "../../components/TeacherFilters/TeacherFilters";
 import TeacherList from "../../components/TeacherList/TeacherList";
-import { getTeachers } from "../../components/redux/Teachers/operations";
+import {
+  getFavoritesTeachers,
+  getTeachers,
+} from "../../components/redux/Teachers/operations";
 import Loader from "../../components/Loader/Loader";
 import {
   errorSelect,
@@ -14,15 +17,25 @@ import {
 import s from "./Teachers.module.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Header from "../../components/Header/Header";
+import { userSelect } from "../../components/redux/Auth/selectors";
 
 const Teachers = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTeachers());
-  }, [dispatch]);
   const isLoading = useSelector(isLoadingSelect);
   const error = useSelector(errorSelect);
   const teachers = useSelector(teachersSelect);
+  const user = useSelector(userSelect);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user?.localId && user.idToken) {
+      dispatch(getFavoritesTeachers(user));
+    }
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getTeachers());
+  }, [dispatch]);
 
   const [filters, setFilters] = useState({ lang: "", lvl: "", price: "" });
   const [visibleCount, setVisibleCount] = useState(3);
@@ -58,13 +71,11 @@ const Teachers = () => {
   const visibleTeachers = filterTeachers.slice(0, visibleCount);
   const hasMore = visibleCount < filterTeachers.length;
 
-  console.log(filterTeachers);
-
   if (isLoading) {
     return <Loader />;
   }
   if (error) {
-    return <p>Teachers not Found</p>;
+    return <ErrorMessage message="Teachers not Found" />;
   }
   return (
     <>

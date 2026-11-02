@@ -5,6 +5,23 @@
 
   border-radius: 20px;
 }
+.btnFavorite {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconFavorite {
+  width: 26px;
+  height: 26px;
+  fill: var(--main-accent);
+}
+
+.iconFavorite:hover {
+  opacity: 0.4;
+}
 
 .wrapperImg {
   display: flex;
