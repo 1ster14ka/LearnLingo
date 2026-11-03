@@ -6,6 +6,9 @@ import s from "./LoginForm.module.css";
 import PasswordField from "../PasswordField/PasswordField";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/Auth/operation";
+import iziToast from "izitoast";
+import useAuthModal from "../../hooks/useAuthModal";
+import { getLoginErrorMessage } from "../../constants/errorMessage";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Must be a valid email!").required("Required"),
@@ -20,10 +23,23 @@ const LoginForm = () => {
     password: "",
   };
   const dispatch = useDispatch();
+  const { closeAuthModal } = useAuthModal();
 
-  const handleSubmit = (values, actions) => {
-    dispatch(loginUser(values));
-    actions.resetForm();
+  const handleSubmit = async (values, actions) => {
+    try {
+      await dispatch(
+        loginUser({ ...values, returnSecureToken: true }),
+      ).unwrap();
+      closeAuthModal();
+      actions.resetForm();
+    } catch (error) {
+      iziToast.error({
+        title: "Login error",
+        message: getLoginErrorMessage(error),
+        position: "topRight",
+      });
+      return;
+    }
   };
 
   return (

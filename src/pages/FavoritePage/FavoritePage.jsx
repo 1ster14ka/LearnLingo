@@ -1,11 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
-import { useEffect } from "react";
-import {
-  getFavoritesTeachers,
-  getTeachers,
-} from "../../components/redux/Teachers/operations";
-import { userSelect } from "../../components/redux/Auth/selectors";
+
 import TeacherList from "../../components/TeacherList/TeacherList";
 import {
   favoriteTeachersSelect,
@@ -17,20 +12,8 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 
 const FavoritePage = () => {
-  const dispatch = useDispatch();
-  const user = useSelector(userSelect);
   const isLoading = useSelector(isLoadingSelect);
 
-  useEffect(() => {
-    dispatch(getTeachers());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (user?.localId && user?.idToken) {
-      dispatch(getFavoritesTeachers(user));
-    }
-    return;
-  }, [dispatch, user]);
   const favoritesTeachers = useSelector(favoriteTeachersSelect);
 
   if (isLoading) {

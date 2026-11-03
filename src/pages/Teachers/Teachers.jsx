@@ -1,12 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 import TeacherFilters from "../../components/TeacherFilters/TeacherFilters";
 import TeacherList from "../../components/TeacherList/TeacherList";
-import {
-  getFavoritesTeachers,
-  getTeachers,
-} from "../../components/redux/Teachers/operations";
+
 import Loader from "../../components/Loader/Loader";
 import {
   errorSelect,
@@ -17,25 +14,11 @@ import {
 import s from "./Teachers.module.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Header from "../../components/Header/Header";
-import { userSelect } from "../../components/redux/Auth/selectors";
 
 const Teachers = () => {
   const isLoading = useSelector(isLoadingSelect);
   const error = useSelector(errorSelect);
   const teachers = useSelector(teachersSelect);
-  const user = useSelector(userSelect);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (user?.localId && user.idToken) {
-      dispatch(getFavoritesTeachers(user));
-    }
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    dispatch(getTeachers());
-  }, [dispatch]);
 
   const [filters, setFilters] = useState({ lang: "", lvl: "", price: "" });
   const [visibleCount, setVisibleCount] = useState(3);

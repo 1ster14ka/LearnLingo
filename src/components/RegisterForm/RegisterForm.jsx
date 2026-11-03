@@ -5,9 +5,12 @@ import s from "./RegisterForm.module.css";
 import PasswordField from "../PasswordField/PasswordField";
 import { useDispatch } from "react-redux";
 import { registerUser, updateAccount } from "../redux/Auth/operation";
+import useAuthModal from "../../hooks/useAuthModal";
+import iziToast from "izitoast";
+import { getRegisterErrorMessage } from "../../constants/errorMessage";
 
 const RegisterSchema = Yup.object().shape({
-  name: Yup.string().min(2, "Too short!"),
+  name: Yup.string().min(2, "Too short!").required("Name is required"),
   email: Yup.string().email("Must be a valid email!").required("Required"),
   password: Yup.string()
     .required("No password provided.")
@@ -20,24 +23,33 @@ const RegisterForm = () => {
     email: "",
     password: "",
   };
+  const { closeAuthModal } = useAuthModal();
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const handleSubmit = async (values, actions) => {
+    try {
+      const data = await dispatch(
+        registerUser({ ...values, returnSecureToken: true }),
+      ).unwrap();
 
-    dispatch(registerUser(values))
-      .unwrap()
-      .then((data) =>
-        dispatch(
-          updateAccount({
-            idToken: data.idToken,
-            displayName: values.name,
-          }),
-        ),
-      );
+      await dispatch(
+        updateAccount({
+          idToken: data.idToken,
+          displayName: values.name,
+        }),
+      ).unwrap();
 
-    actions.resetForm();
+      closeAuthModal();
+      actions.resetForm();
+    } catch (error) {
+      iziToast.error({
+        title: "Registration error",
+        message: getRegisterErrorMessage(error),
+        position: "topRight",
+      });
+      return;
+    }
   };
 
   return (

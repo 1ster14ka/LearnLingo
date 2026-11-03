@@ -16,7 +16,9 @@ export const getTeachers = createAsyncThunk(
         return { ...teacher, id };
       });
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error?.message || error.message,
+      );
     }
   },
 );

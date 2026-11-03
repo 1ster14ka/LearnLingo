@@ -17,7 +17,9 @@ export const registerUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error?.message || error.message,
+      );
     }
   },
 );
@@ -33,7 +35,9 @@ export const loginUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error?.message || error.message,
+      );
     }
   },
 );
@@ -48,7 +52,36 @@ export const updateAccount = createAsyncThunk(
       );
       return data.displayName;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error?.message || error.message,
+      );
+    }
+  },
+);
+
+export const refreshToken = createAsyncThunk(
+  "/auth/refreshToken",
+  async (refreshToken, thunkAPI) => {
+    const params = URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token: refreshToken,
+    });
+
+    try {
+      const { data } = await axios.post(
+        `https://securetoken.googleapis.com/v1/token?key=${firebaseConfig.apiKey}`,
+        params,
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        },
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.error?.message || error.message,
+      );
     }
   },
 );
